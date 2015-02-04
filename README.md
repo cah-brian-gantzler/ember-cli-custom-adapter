@@ -1,5 +1,5 @@
 # ember-cli-custom-adapter
-Demo repo to show that the Tests do not find custom adapters
+Demo repo to show that the Tests do not find custom adapters of more than one word.
 
 If you run the application with a straight ember server, there is a couple store.finds in the applicationRoute. 
 One camelCase, one dasherized. The expected behaviour is that the network request would be made using the 

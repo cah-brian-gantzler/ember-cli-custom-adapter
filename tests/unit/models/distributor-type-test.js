@@ -13,7 +13,7 @@ test('it exists', function() {
 
     /**
      * If you uncomment this, you will find it can not find the model.
-     * (even though dasherized may be required, this syntax DOES work when NOT in a test (see route/application)
+     * (even though dasherized may be required, this syntax DOES work when NOT in a test (see route/application) )
      */
 //        store.find("distributorType").then(function(obj){
 //            ok(obj);
@@ -27,6 +27,8 @@ test('it exists', function() {
            http://localhost:4200/distributorTypes
 
        This indicates that the custom adapter was not resolved and then fell back to the application adapter.
+       Note that this is only a problem with multi word custom adapters. Custom adapters of a single word (not
+       containing dashes I'm assuming work as expected)
 
      */
 //    debugger;
