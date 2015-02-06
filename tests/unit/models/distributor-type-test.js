@@ -12,16 +12,6 @@ test('it exists', function() {
     var store = this.store();
 
     /**
-     * If you uncomment this, you will find it can not find the model.
-     * (even though dasherized may be required, this syntax DOES work when NOT in a test (see route/application) )
-     */
-//        store.find("distributorType").then(function(obj){
-//            ok(obj);
-//        }, function(error){
-//            console.log(error);
-//        });
-
-    /**
      * This store request will generate the below network request
 
            http://localhost:4200/distributorTypes
@@ -32,12 +22,17 @@ test('it exists', function() {
 
      */
 //    debugger;
-    store.find("distributor-type");
-
-    /**
-     * Result of test doesn't matter. This repo is to prove the that the custom adapter is NOT being found
-     */
-    ok(true);
+    store.find("distributor-type").then(
+        function(result) {
+            // This should retrieve records
+            ok(result);
+        },
+        function(error) {
+//            debugger;
+            // we reached here because the custom adapter was not correctly resolved
+            ok(false, "Error:" + error.status + " " + error.statusText);
+        }
+    );
 
 
     /**
@@ -55,7 +50,7 @@ test('it exists', function() {
                 return fullName;
               }
 
-     however if you step through this repos route/application beforeModel (when not in test) and reach the same point
+     however if you step through this repos route/application model (when not in test) and reach the same point
      this.normalizeFullName is the following function. This is why it works non test code. But doesn't work in test.
 
      function (fullName) {
